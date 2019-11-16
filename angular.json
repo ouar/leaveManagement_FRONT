@@ -24,7 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/style/dataTables.bootstrap4.min.css",
+              "src/style/sb-admin.min.css"
             ],
             "scripts": []
           },
