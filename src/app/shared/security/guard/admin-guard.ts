@@ -10,7 +10,7 @@ import {
 import { AuthenticationService } from './../services/authentication-service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   private currentUser: User;
   constructor(
     private router: Router,
@@ -20,7 +20,10 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     this.currentUser = this.authenticationService.currentUserValue;
 
-    if (this.currentUser) {
+    if (
+      this.currentUser &&
+      this.currentUser.roles.find(role => role.roleCode === 'ADMIN')
+    ) {
       // authorised so return true
       return true;
     }

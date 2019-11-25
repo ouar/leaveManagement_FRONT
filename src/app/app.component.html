@@ -20,7 +20,7 @@
           <span>Dashboard</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isAdmin()">
         <a class="nav-link" routerLink="/conges">
           <i class="fas fa-fw fa-table"></i>
           <span>Mes congés</span></a

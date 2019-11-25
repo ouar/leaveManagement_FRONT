@@ -1,3 +1,4 @@
+import { AdminGuard } from './shared/security/guard/admin-guard';
 import { Subscription } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
@@ -22,7 +23,9 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthentificated(): boolean {
     return this.currentUser ? true : false;
   }
-
+  isAdmin(): boolean {
+    return this.currentUser && this.currentUser.roles.find(role => role.roleCode === 'ADMIN') ? true : false;
+  }
   ngOnInit() {}
 
   ngOnDestroy(): void {
