@@ -13,6 +13,8 @@ import { AuthenticationService } from './shared/security/services/authentication
 export class AppComponent implements OnInit, OnDestroy {
   currentUser: User;
   private authentication$: Subscription;
+  showMenu: string;
+  collapedSideBar: boolean;
 
   constructor(private authenticationService: AuthenticationService) {
     this.authentication$ = this.authenticationService.currentUser.subscribe(
@@ -24,7 +26,10 @@ export class AppComponent implements OnInit, OnDestroy {
     return this.currentUser ? true : false;
   }
   isAdmin(): boolean {
-    return this.currentUser && this.currentUser.roles.find(role => role.roleCode === 'ADMIN') ? true : false;
+    return this.currentUser &&
+      this.currentUser.roles.find(role => role.roleCode === 'ADMIN')
+      ? true
+      : false;
   }
   ngOnInit() {}
 
@@ -36,5 +41,16 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authenticationService.logout();
+  }
+
+  addExpandClass(element: any) {
+    if (element === this.showMenu) {
+      this.showMenu = '0';
+    } else {
+      this.showMenu = element;
+    }
+  }
+  receiveCollapsed($event) {
+    this.collapedSideBar = $event;
   }
 }

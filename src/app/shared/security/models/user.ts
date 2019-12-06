@@ -1,4 +1,5 @@
-import { Role } from './role';
+// tslint:disable-next-line:quotemark
+import { Role } from "./role";
 export class User {
   id: number;
   userName: string;
@@ -7,4 +8,5 @@ export class User {
   lastName: string;
   token: string;
   roles: Role[];
+  authdata?: string;
 }

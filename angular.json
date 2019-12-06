@@ -26,7 +26,8 @@
             "styles": [
               "src/styles.css",
               "src/style/dataTables.bootstrap4.min.css",
-              "src/style/sb-admin.min.css"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/style/app.scss"
             ],
             "scripts": []
           },

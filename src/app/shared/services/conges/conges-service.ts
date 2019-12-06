@@ -13,7 +13,7 @@ export class CongesService {
   constructor(private http: HttpClient) {}
 
   findCongesCollaborater(): Observable<Conge[]> {
-    return this.http.get<Conge[]>(this.apiUrl + '/leaves/');
+    return this.http.get<Conge[]>(this.apiUrl + '/leaves');
   }
 
   initListConges(listConges: Array<Conge>) {

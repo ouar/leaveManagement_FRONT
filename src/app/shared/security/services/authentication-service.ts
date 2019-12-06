@@ -30,6 +30,9 @@ export class AuthenticationService {
       .post<any>(this.apiUrl + '/users/authenticate', { userName, password })
       .pipe(
         map(user => {
+
+          // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
+          user.authdata = window.btoa(userName + ':' + password);
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
