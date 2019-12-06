@@ -1,0 +1,50 @@
+<div id="content-wrapper">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Collaborateurs</li>
+    </ol>
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fas fa-table"></i>
+        List des collaborateurs
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>dateNaissance</th>
+                <th>email</th>
+                <th>lieuNaissance</th>
+                <th>nom</th>
+                <th>prenom</th>
+                <th>titre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let collaborateur of listCollaboraters">
+                <td>{{ collaborateur?.dateNaissance}}</td>
+                <td>{{ collaborateur?.email }}</td>
+                <td>{{ collaborateur?.lieuNaissance }}</td>
+                <td>{{ collaborateur?.nom }}</td>
+                <td>{{ collaborateur?.prenom }}</td>
+                <td>{{ collaborateur?.titre }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
