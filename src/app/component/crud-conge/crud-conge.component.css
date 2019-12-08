@@ -1,0 +1,9 @@
+.my-table {
+  width: 100%;
+}
+.mat-dialog-actions[align='end'] {
+  justify-content: flex-end;
+}
+.mat-dialog-actions[align='center'] {
+  justify-content: center;
+}

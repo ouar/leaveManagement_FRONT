@@ -1,0 +1,42 @@
+<!-- dialog-box.component.html -->
+
+<div mat-dialog-content>
+  <div class="example-form" *ngIf="action != 'Supprimer'; else elseTemplate">
+    <mat-form-field>
+      <input placeholder="Motif" matInput [(ngModel)]="localData.cause" />
+    </mat-form-field>
+    <mat-form-field color="accent">
+      <input
+        matInput
+        [matDatepicker]="dateDebut"
+        placeholder="Date de début"
+        [(ngModel)]="localData.dateDebut"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="dateDebut"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #dateDebut ></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field color="accent">
+      <input
+        matInput
+        [matDatepicker]="dateFin"
+        placeholder="Date de fin"
+        [(ngModel)]="localData.dateFin"
+      />
+      <mat-datepicker-toggle matSuffix [for]="dateFin"></mat-datepicker-toggle>
+      <mat-datepicker #dateFin></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <ng-template #elseTemplate>
+    Êtes-vous sûr de vouloir supprimer <b>{{ localData.cause }}</b
+    >?
+  </ng-template>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="doAction()">{{ localData.action }}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
+    Annuler
+  </button>
+</div>
