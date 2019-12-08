@@ -1,17 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/security/services/authentication-service';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/shared/security/models/user';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
     public pushRightClass: string;
+    currentUser: User;
+    private authentication$: Subscription;
+    private router$: Subscription;
 
-    constructor(public router: Router) {
+    constructor(public router: Router, private authenticationService: AuthenticationService) {
 
-        this.router.events.subscribe(val => {
+      this.router$ = this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&
                 window.innerWidth <= 992 &&
@@ -20,6 +26,10 @@ export class HeaderComponent implements OnInit {
                 this.toggleSidebar();
             }
         });
+
+      this.authentication$ = this.authenticationService.currentUser.subscribe(
+          x => (this.currentUser = x)
+        );
     }
 
     ngOnInit() {
@@ -41,7 +51,16 @@ export class HeaderComponent implements OnInit {
         dom.classList.toggle('rtl');
     }
 
-    onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+    logout() {
+      this.authenticationService.logout();
+    }
+
+    ngOnDestroy(): void {
+      if (this.authentication$) {
+        this.authentication$.unsubscribe();
+      }
+      if (this.router$) {
+        this.router$.unsubscribe();
+      }
     }
 }

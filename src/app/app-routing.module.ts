@@ -9,10 +9,11 @@ import { AuthGuard } from './shared/security/guard/auth-guard';
 import { HomeComponent } from './component/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CrudCongeComponent } from './component/crud-conge/crud-conge.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'leaves', component: CongesComponent, canActivate: [AuthGuard] },
+  { path: 'leaves', component: CrudCongeComponent, canActivate: [AuthGuard] },
   { path: 'contributors', component: ListeCollaborateurComponent, canActivate: [AdminGuard] },
   { path: 'add-contributor', component: CreateCollaborateurComponent, canActivate: [AdminGuard] },
   { path: 'users', component: UsersListComponent, canActivate: [AdminGuard] },

@@ -8,7 +8,7 @@
       <li class="breadcrumb-item active">Mes congés</li>
     </ol>
 
-    <!-- DataTables Example -->
+
     <div class="card mb-3">
       <div class="card-header">
         <i class="fas fa-table"></i>
@@ -30,14 +30,16 @@
                       <th>Date de début</th>
                       <th>Date de demande</th>
                       <th>Nombre de jours</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let conge of listConges">
                       <td>{{ conge?.cause }}</td>
                       <td>{{ conge?.dateDebut }}</td>
-                      <td>{{ conge?.dateDmande }}</td>
+                      <td>{{ conge?.dateDemande }}</td>
                       <td>{{ conge?.nombreJour }}</td>
+                      <td><button class="btn btn-primary">Edit</button></td>
                     </tr>
                   </tbody>
                 </table>
