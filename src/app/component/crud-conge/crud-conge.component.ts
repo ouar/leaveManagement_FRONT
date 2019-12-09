@@ -21,9 +21,9 @@ export class CrudCongeComponent implements OnInit, OnDestroy {
   ];
   private httpFindlistConges$: Subscription;
   private listConges$: Subscription;
-  httpDeletConges$: Subscription;
-  httpUpdateConges$: Subscription;
-  httpAddConges$: Subscription;
+  private httpDeletConges$: Subscription;
+  private httpUpdateConges$: Subscription;
+  private httpAddConges$: Subscription;
   protected dataSource: Array<Conge> = [];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
@@ -39,18 +39,18 @@ export class CrudCongeComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'Ajouter') {
-        this.addRowData(result.data);
+        this.addCongeCollaborateur(result.data);
       } else if (result.event === 'Modifier') {
-        this.updateRowData(result.data);
+        this.updateCongeCollaborateur(result.data);
       } else if (result.event === 'Supprimer') {
-        this.deleteRowData(result.data);
+        this.deleteCongeCollaborateur(result.data);
       }
     });
   }
 
-  addRowData(conge: Conge) {
+  addCongeCollaborateur(conge: Conge) {
     this.httpAddConges$ = this.congesService
-      .addCongeCollaborater(conge)
+      .addCongeCollaborateur(conge)
       .subscribe(
         listConges => {
           this.dataSource = listConges;
@@ -61,10 +61,10 @@ export class CrudCongeComponent implements OnInit, OnDestroy {
       );
     this.table.renderRows();
   }
-  updateRowData(conge: Conge) {
+  updateCongeCollaborateur(conge: Conge) {
     console.log(conge.dateDebut);
     this.httpUpdateConges$ = this.congesService
-      .updateCongeCollaborater(conge)
+      .updateCongeCollaborateur(conge)
       .subscribe(
         listConges => {
           this.dataSource = listConges;
@@ -75,9 +75,9 @@ export class CrudCongeComponent implements OnInit, OnDestroy {
       );
     this.table.renderRows();
   }
-  deleteRowData(conge: Conge) {
+  deleteCongeCollaborateur(conge: Conge) {
     this.httpDeletConges$ = this.congesService
-      .deleteCongeCollaborater(conge.id)
+      .deleteCongeCollaborateur(conge.id)
       .subscribe(
         listConges => {
           this.dataSource = listConges;
