@@ -1,0 +1,22 @@
+<div id="content-wrapper">
+  <div class="container-fluid">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a routerLink="/posts">Articles</a>
+      </li>
+      <li class="breadcrumb-item active">Ajouter un article</li>
+    </ol>
+    <div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card card-default">
+            <div [innerHTML]="editDetailPost.body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div id="content-wrapper">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a routerLink="/posts">Articles</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a routerLink="{{ path }}">autre</a>
+      </li>
+      <li class="breadcrumb-item active">
+        Détail de l'article {{ editPost.slug }}
+      </li>
+    </ol>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div>
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg"
+              style="float: right;margin-bottom: 5;"
+            >
+              Ajouter un sujet
+            </button>
+          </div>
+          <ul class="all-blogs">
+            <li class="media" *ngFor="let postDatil of editPost.postDetails">
+              <div class="media-body">
+                <a
+                  class="pull-left"
+                  [routerLink]="[
+                    '/posts',
+                    editPost.slug,
+                    'edit-post-detail',
+                    postDatil.id
+                  ]"
+                  >{{ postDatil.title }}</a
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
