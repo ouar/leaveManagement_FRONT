@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public sliders: Array<any> = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.sliders.push(
+      {
+        imagePath: '/assets/images/home-banner.jpg',
+        label: 'First slide label',
+        text: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
+      },
+      {
+        imagePath: '/assets/images/port02.jpg',
+        label: 'Second slide label',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      }
+    );
   }
-
 }

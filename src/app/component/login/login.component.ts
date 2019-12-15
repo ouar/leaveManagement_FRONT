@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     return this.loginForm.controls;
   }
 
-  onSubmit() {
+  login() {
     this.submitted = true;
 
     // stop here if form is invalid

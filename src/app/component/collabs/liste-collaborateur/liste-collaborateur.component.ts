@@ -17,12 +17,12 @@ export class ListeCollaborateurComponent implements OnInit, OnDestroy {
 
   protected listCollaboraters: Array<Collaborateur> = [];
   constructor(
-    private CollaboratersService: Collaboraterervice,
+    private collaboratersService: Collaboraterervice,
     private modalService: NgbModal
   ) {}
 
   ngOnInit() {
-    this.listCollaboraters$ = this.CollaboratersService.ArraylistCollaborater.subscribe(
+    this.listCollaboraters$ = this.collaboratersService.ArraylistCollaborater.subscribe(
       state => {
         this.listCollaboraters = state;
       }
@@ -41,12 +41,12 @@ export class ListeCollaborateurComponent implements OnInit, OnDestroy {
   }
 
   findCollaboraters() {
-    this.httpFindlistCollaboraters$ = this.CollaboratersService.findCollaborater().subscribe(
+    this.httpFindlistCollaboraters$ = this.collaboratersService.findCollaborater().subscribe(
       listCollaboraters => {
         this.listCollaboraters = listCollaboraters;
       },
       error => {
-        this.CollaboratersService.clearListCollaboraters();
+        this.collaboratersService.clearListCollaboraters();
         const modalRef = this.modalService.open(MessageComponent, {
           size: 'sm'
         });

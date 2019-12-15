@@ -62,7 +62,6 @@ export class CrudCongeComponent implements OnInit, OnDestroy {
     this.table.renderRows();
   }
   updateCongeCollaborateur(conge: Conge) {
-    console.log(conge.dateDebut);
     this.httpUpdateConges$ = this.congesService
       .updateCongeCollaborateur(conge)
       .subscribe(

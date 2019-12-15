@@ -12,12 +12,21 @@
       <span>Tableau de bord</span>
     </a>
     <a
+    *ngIf="isAdmin()"
       [routerLink]="['/leaves']"
       [routerLinkActive]="['router-link-active']"
       class="list-group-item"
     >
       <i class="fa fa-fw fa-wrench"></i>&nbsp;
       <span>Mes congés</span>
+    </a>
+    <a
+      [routerLink]="['/posts']"
+      [routerLinkActive]="['router-link-active']"
+      class="list-group-item"
+    >
+      <i class="fa fa-fw fa-book"></i>&nbsp;
+      <span>Articles</span>
     </a>
     <a
       *ngIf="isAdmin()"
@@ -32,7 +41,10 @@
     <div class="header-fields">
       <div class="nested-menu">
         <a class="list-group-item" (click)="addExpandClass('profile')">
-          <span><i class="fa fa-user"></i>&nbsp; {{currentUser.userName}} {{currentUser.name}} </span>
+          <span
+            ><i class="fa fa-user"></i>&nbsp; {{ currentUser.userName }}
+            {{ currentUser.name }}
+          </span>
         </a>
         <li class="nested" [class.expand]="showMenu === 'profile'">
           <ul class="submenu">

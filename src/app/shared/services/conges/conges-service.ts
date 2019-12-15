@@ -1,5 +1,4 @@
 import { Conge } from './../../security/models/conge';
-import { map } from 'rxjs/operators';
 import { environment } from './../../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -22,13 +21,24 @@ export class CongesService {
     return this.http.get<Conge[]>(this.apiUrl + '/leaves');
   }
   addCongeCollaborateur(conge: Conge): Observable<Conge[]> {
-    return this.http.post<Conge[]>(this.apiUrl + '/leaves', JSON.stringify(conge), this.httpOptions);
+    return this.http.post<Conge[]>(
+      this.apiUrl + '/leaves',
+      JSON.stringify(conge),
+      this.httpOptions
+    );
   }
   deleteCongeCollaborateur(idConge: number): Observable<Conge[]> {
-    return this.http.delete<Conge[]>(this.apiUrl + '/leaves/' + idConge, this.httpOptions);
+    return this.http.delete<Conge[]>(
+      this.apiUrl + '/leaves/' + idConge,
+      this.httpOptions
+    );
   }
   updateCongeCollaborateur(conge: Conge): Observable<Conge[]> {
-    return this.http.put<Conge[]>(this.apiUrl + '/leaves/' + conge.id, JSON.stringify(conge), this.httpOptions);
+    return this.http.put<Conge[]>(
+      this.apiUrl + '/leaves/' + conge.id,
+      JSON.stringify(conge),
+      this.httpOptions
+    );
   }
 
   initListConges(listConges: Array<Conge>) {

@@ -23,7 +23,6 @@ export class DialogBoxComponent implements OnInit {
   }
 
   doAction() {
-    console.log(this.action)
     this.dialogRef.close({ event: this.action, data: this.localData });
   }
 

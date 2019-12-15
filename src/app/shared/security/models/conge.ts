@@ -5,7 +5,4 @@ export class Conge {
   dateDemande: string;
   dateFin: string;
   nombreJour: number;
-
-
-
 }
