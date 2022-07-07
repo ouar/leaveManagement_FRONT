@@ -36,7 +36,7 @@
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.4.1",
     "font-awesome": "^4.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ngx-bootstrap": "^5.2.0",
     "ngx-moment": "^3.5.0",
     "rxjs": "~6.4.0",
